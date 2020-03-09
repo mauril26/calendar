@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-end">
+    <div class="d-flex">
+      <div class="btn-group" role="group">
+        <a type="button" class="btn btn-primary" routerLink="/{{previousCalendarUri}}">Previous</a>
+        <a type="button" class="btn btn-primary" routerLink="/{{currentDateCalendarUri}}">This month</a>
+        <a type="button" class="btn btn-primary" routerLink="/{{nextCalendarUri}}">Next</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <hr />
+  </div>
+
+  <div class="row header">
+    <div class="d-flex calendar-column badge badge-secondary">Sunday</div>
+    <div class="d-flex calendar-column badge badge-light">Monday</div>
+    <div class="d-flex calendar-column badge badge-light">Tuesday</div>
+    <div class="d-flex calendar-column badge badge-light">Wednesday</div>
+    <div class="d-flex calendar-column badge badge-light">Thursday</div>
+    <div class="d-flex calendar-column badge badge-light">Friday</div>
+    <div class="d-flex calendar-column badge badge-secondary">Saturday</div>
+  </div>
+
+  <div class="row">
+    <div
+      *ngFor="let day of days; index as i"
+      d-flex
+      class="card calendar-column"
+      [ngClass] = "{
+        'day-off': !isAvailableDay(i),
+        'day': isAvailableDay(i)
+      }"
+    >
+
+      <div *ngIf="isMonthDay(i)" class="card-title">
+        {{i - firstDayOfMonthOffset + 1}}
+      </div>
+
+      <div class="card-body">
+        <a routerLink="/new/{{year}}/{{month}}/{{i+1}}" class="btn btn-primary add-event-button">+</a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

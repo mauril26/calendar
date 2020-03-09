@@ -1,0 +1,21 @@
+.calendar-column {
+  width: 14.25%;
+}
+
+.day-off {
+  background-color: #f8f9fa;
+  /* background-color: blue; */
+  cursor: not-allowed;
+}
+
+.day {
+  cursor: pointer;
+}
+
+.add-event-button {
+  visibility: hidden;
+}
+
+.day:hover .add-event-button {
+  visibility: visible;
+}
